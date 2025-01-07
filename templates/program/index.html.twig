@@ -3,21 +3,19 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1 class="text-center text-2xl underline mb-3">Toutes les séries de la table program : </h1>
+    <h1 class="text-center text-3xl underline mb-3 pb-2 border-b-4 border-black">Tous les programmes</h1>
     {% for program in programs %}
-        <div class="mb-5 ml-1 flex">
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p class="ml-3">{{ program.summary }}</p>
+        <div class="flex mb-3 border-b-4 border-black">
+             <div class="ml-2 w-[25%] mb-3">
+                <img src="{{ program.poster }}" alt="{{ program.title }}">
+            </div>
+            <div class="mb-5 ml-1 w-[75%] flex flex-col justify-between">
+                <h2 class="self-center text-lg font-bold">{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+                <p class="ml-3">{{ program.summary }}</p>
+                <a href="{{ path("program_show", { id: program.id }) }}" class="self-center text-lg bg-lime-500 p-1 rounded-md hover:bg-lime-600">Voir la fiche</a>
+            </div>
         </div>
-        <div class="ml-2 w-60">
-            <img src="{{ program.poster }}" alt="{{ program.title }}">
-        </div>
-        <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-    <br>
-    <a href="{{ path('index') }}" class="text-center text-lg">
-        Retour à l'accueil
-    </a>
 {% endblock %}

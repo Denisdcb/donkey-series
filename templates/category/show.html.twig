@@ -12,11 +12,12 @@
             {% for serie in series %}
                 <li>
                     <strong>ID :</strong> {{ serie.id }}<br>
-                    <strong>Titre :</strong> 
-                    <a href="{{ path('program_show', { id: serie.id }) }}">
-                        {{ serie.title }}
-                    </a><br>
+                    <strong>Titre : {{ serie.title }}</strong> 
                     <strong>Résumé :</strong> {{ serie.summary }}
+                    <img src="{{ serie.poster }}" alt="Image de la série {{ serie.title }}" class="w-60">
+                    <a href="{{ path('program_show', { id: serie.id }) }}">
+                        < Voir la fiche >
+                    </a><br>
                 </li>
             {% endfor %}
         </ul>

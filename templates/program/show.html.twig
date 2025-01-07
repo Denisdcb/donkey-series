@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Série #{{ program.id }}{% endblock %}
+{% block title %}{{ program.title    }}{% endblock %}
 
 {% block body %}
-    <div class="media mb-5">
-        <img class="w-60" src="{{program.poster}}" alt="{{ program.title }} poster">
-        <div class="media-body">
-            <h1 class="mt-0">{{ program.title }}</h1>
-            <p>{{ program.summary }}</p>
-            <p>Catégorie : {{ program.category.name }}</p>
+    <h2 class="text-center text-2xl underline font-bold mb-5">Programme : {{ program.title }}</h2>
+    <div class="ml-2 mb-5 flex">
+        <img class="w-[25%]" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div class="ml-2 w-[75%] flex flex-col justify-between">
+            <div>
+                <h3 class="text-lg font-bold justify-self-start underline">Description :</h3>
+                <p class="w-[50%]">{{ program.summary }}</p>
+            </div>
+            <p class="font-bold">Catégorie : {{ program.category.name }}</p>
         </div>
     </div>
-
-    <a href="{{ path('program_index') }}">
+    <a href="{{ path('program_index') }}" class="text-center text-lg font-bold">
         Retour à la liste des programmes
     </a>
 {% endblock %}

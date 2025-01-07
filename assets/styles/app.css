@@ -4,4 +4,10 @@
 
 body {
     background-color: white;
+    height: max-content
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
 }
