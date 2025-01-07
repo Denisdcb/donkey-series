@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Page de programme
-{% endblock %}
+{% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue sur la page de programme</h1>
-
-    <p>Ceci est le contenu de la page de programme</p>
+    <h1 class="text-center text-2xl underline mb-3">Toutes les séries de la table program : </h1>
+    {% for program in programs %}
+        <div class="mb-5 ml-1 flex">
+            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <p class="ml-3">{{ program.summary }}</p>
+        </div>
+        <div class="ml-2 w-60">
+            <img src="{{ program.poster }}" alt="{{ program.title }}">
+        </div>
+        <a href="{{ path("program_show", { id: program.id }) }}">Voir la fiche</a>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <br>
+    <a href="{{ path('index') }}" class="text-center text-lg">
+        Retour à l'accueil
+    </a>
 {% endblock %}
