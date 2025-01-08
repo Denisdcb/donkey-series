@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ program.title    }}{% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
     <h2 class="text-center text-2xl underline font-bold mb-5">Programme : {{ program.title }}</h2>
@@ -12,6 +12,7 @@
                 <p class="w-[50%]">{{ program.summary }}</p>
             </div>
             <p class="font-bold">Catégorie : {{ program.category.name }}</p>
+            <a href="{{ path('program_seasons' , { id: program.id }) }}">Voir toutes les saisons</a>
         </div>
     </div>
     <a href="{{ path('program_index') }}" class="text-center text-lg font-bold">
