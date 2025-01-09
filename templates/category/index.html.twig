@@ -5,10 +5,10 @@
 {% block body %}
     <h1 class="mt-2 mb-3 text-2xl underline font-bold text-center">Liste des catégories :</h1>
 
-    <ul class="w-full flex justify-center gap-2">    
+    <ul class="w-full flex gap-2">    
         {% for category in categories %}
-            <li class="w-[23%] text-center border-2 border-black rounded-md bg-black">
-                <img src="{{ asset('images/'~category.name~'.png') }}" alt="{{ category.name }}">
+            <li class="w-full text-center border-2 border-black rounded-md bg-black">
+                <img src="{{ asset('images/'~category.name~'.png') }}" alt="{{ category.name }}" class="w-full h-auto">
                 <a href="{{ path('category_show', { categoryName: category.name }) }}" class="text-lime-500 text-lg font-bold hover:text-lime-600">
                     < {{ category.name }} >
                 </a>

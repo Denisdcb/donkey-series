@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div class="flex flex-col">
+        {{ form_widget(form.title, {'attr': {'class': 'w-[25%] border-2 border-black rounded-md m-2 pl-2', 'placeholder': 'Titre du programme'}}) }}
+        {{ form_widget(form.summary, {'attr': {'class': 'w-[25%] border-2 border-black rounded-md m-2 pl-2', 'placeholder': 'Résumé'}}) }}
+        {{ form_widget(form.poster, {'attr': {'class': 'w-[25%] border-2 border-black rounded-md m-2 pl-2', 'placeholder': "Liens vers l'image"}}) }}
+        {{ form_widget(form.category, {'attr': {'class': 'w-[25%] border-2 border-black rounded-md m-2 pl-2'}}) }}
+        <button type="submit" class="ml-2 w-[25%] bg-lime-500 p-1 rounded-md hover:bg-lime-600">Ajouter</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

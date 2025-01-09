@@ -2,11 +2,16 @@
 
 {% block body %}
 
-
-<h2>{{ program.title }} - Saison {{ season.number }}</h2>
-<ul>
-   <p>{{ dump(episodes) }}</p>
-   <p>{{ dump(season) }}</p>
-   <p>{{ dump(program) }}</p>
-</ul>
+{% if episodes is empty %}
+   <p>Aucun épisode trouvé</p>
+{% else %}
+<h2 class="text-center text-xl font-bold underline mb-5">{{ program.title }} - Saison {{ season.number }}</h2>
+{% for episode in episodes %}
+   <div class="w-[25%] flex flex-col m-2 border-2 border-black rounded-md">
+      <p>Titre : {{ episode.title }}</p>
+      <p>Numéro de l'épisode : {{ episode.number }}</p>
+      <p>Résumé : {{ episode.description }}</p>
+   </div>
+{% endfor %}
+{% endif %}
 {% endblock %}

@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\CategoryRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +24,31 @@ class CategoryController extends AbstractController
         // Retourner la vue avec les catégories
         return $this->render('category/index.html.twig', [
             'categories' => $categories,
+        ]);
+    }
+
+    //Controller pour ajouter une catégorie
+    #[Route('/add', name: 'add')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Creer un nouvel objet Category
+        $category = new Category();
+        // Creer le formulaire associé
+        $form = $this->createForm(CategoryType::class, $category);
+        // Récupérer les données de la requête
+        $form->handleRequest($request);
+        // Si le formulaire est valide
+        if ($form->isSubmitted()) {
+            // Enregistrer la catégorie
+            $entityManager->persist($category);
+            // Insérer en base de données
+            $entityManager->flush();
+            // Rediriger vers la page de liste des catégories
+            return $this->redirectToRoute('category_index');
+        }
+        // Retourner la vue avec le formulaire
+        return $this->render('category/add.html.twig', [
+            "form" => $form->createView(),
         ]);
     }
 
