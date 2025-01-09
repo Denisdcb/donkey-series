@@ -27,7 +27,7 @@ class Seasons
     private ?int $year = null;
 
     #[ORM\Column]
-    private ?int $numbersEpisode = null;
+    private ?int $numbersOfEpisode = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
@@ -86,12 +86,12 @@ class Seasons
 
     public function getNumbersOfEpisode(): ?int
     {
-        return $this->numbersEpisode;
+        return $this->numbersOfEpisode;
     }
 
-    public function setNumbersEpisode(int $numbersEpisode): static
+    public function setNumbersOfEpisode(int $numbersOfEpisode): static
     {
-        $this->numbersEpisode = $numbersEpisode;
+        $this->numbersOfEpisode = $numbersOfEpisode;
 
         return $this;
     }

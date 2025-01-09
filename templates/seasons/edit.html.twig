@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Seasons{% endblock %}
+
+{% block body %}
+    <h1>Edit Seasons</h1>
+
+    {{ include('seasons/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_seasons_index') }}">back to list</a>
+
+    {{ include('seasons/_delete_form.html.twig') }}
+{% endblock %}

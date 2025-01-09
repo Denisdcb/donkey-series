@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Seasons{% endblock %}
+
+{% block body %}
+    <h1>Create new Seasons</h1>
+
+    {{ include('seasons/_form.html.twig') }}
+
+    <a href="{{ path('app_seasons_index') }}">back to list</a>
+{% endblock %}
